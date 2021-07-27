@@ -1,0 +1,6 @@
+<launch>
+    <include file="$(find vins)/launch/vins_rviz.launch" />
+
+    <node name="a1_visualizer" pkg="a1_visualizer" type="a1_visualizer" output= "screen"/>
+
+</launch>
