@@ -22,6 +22,6 @@ It also read a unitree_legged_msgs::LowState topic "a1/debug_state"
 
 
 The visualization result looks like this:
-
+![visualize_image](doc/images/a1_visualizer.png)
 
 (The camera frame and points in the scene comes from VINS-Fusion. They are not part of this package)
