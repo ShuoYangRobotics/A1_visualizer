@@ -69,3 +69,17 @@ target_link_libraries( a1_visualizer
                           ${orocos_kdl_LIBRARIES}
                           ${catkin_LIBRARIES} 
                      )
+
+
+# this is for Isaac Sim robot
+SET(ISAAC_A1_SOURCES
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/isaac_a1_visualize.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/robot_markers/builder.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/robot_markers/forward_kinematics.cpp
+)
+
+add_executable(isaac_a1_visualizer
+  ${ISAAC_A1_SOURCES} )
+target_link_libraries( isaac_a1_visualizer
+                          ${orocos_kdl_LIBRARIES}
+                          ${catkin_LIBRARIES} )
