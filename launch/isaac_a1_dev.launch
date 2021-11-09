@@ -1,0 +1,7 @@
+<launch>
+    <node name="rvizvisualisation" pkg="rviz" type="rviz" output="log" args="-d $(find a1_visualizer)/config/a1_dev_path.rviz" />
+
+    
+    <node name="a1_visualizer" pkg="a1_visualizer" type="isaac_a1_visualizer" output= "screen"/>
+
+</launch>

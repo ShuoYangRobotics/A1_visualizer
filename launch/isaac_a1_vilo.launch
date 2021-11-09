@@ -1,0 +1,6 @@
+<launch>
+    <include file="$(find a1_visualizer)/launch/vilo_rviz.launch" />
+
+    <node name="a1_visualizer" pkg="a1_visualizer" type="isaac_a1_visualizer" output= "screen"/>
+
+</launch>

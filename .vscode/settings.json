@@ -1,0 +1,22 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/shuoy/nv_work/util_ws/devel/lib/python3/dist-packages",
+        "/home/shuoy/nv_work/unitree_ws/devel/lib/python3/dist-packages",
+        "/home/shuoy/nv_work/ros_catkin_ws/install/lib/python3/dist-packages",
+        "/home/shuoy/nv_work/ros_catkin_ws/devel/lib/python3/dist-packages",
+        "/home/shuoy/nv_work/carbgym/python",
+        "/home/shuoy/nv_work/laikago_rl"
+    ],
+    "files.associations": {
+        "unordered_map": "cpp",
+        "unordered_set": "cpp"
+    },
+    "python.analysis.extraPaths": [
+        "/home/shuoy/nv_work/util_ws/devel/lib/python3/dist-packages",
+        "/home/shuoy/nv_work/unitree_ws/devel/lib/python3/dist-packages",
+        "/home/shuoy/nv_work/ros_catkin_ws/install/lib/python3/dist-packages",
+        "/home/shuoy/nv_work/ros_catkin_ws/devel/lib/python3/dist-packages",
+        "/home/shuoy/nv_work/carbgym/python",
+        "/home/shuoy/nv_work/laikago_rl"
+    ]
+}

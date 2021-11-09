@@ -43,6 +43,8 @@ ros::Publisher marker_arr_pub;
 // move joint position as global variable 
 std::map<std::string, double> joint_positions;
 tf::TransformListener* listener;
+// body pose is global variable
+geometry_msgs::Pose vis_body_pose;
 
 
 void a1_joint_state_callback(const sensor_msgs::JointStateConstPtr& a1_state) 
@@ -74,7 +76,6 @@ void a1_joint_state_callback(const sensor_msgs::JointStateConstPtr& a1_state)
     // ROS_INFO("vis_body_pose");
     // listen to tf
     tf::StampedTransform transform;
-    geometry_msgs::Pose vis_body_pose;
     try{
         listener -> lookupTransform("/a1_world", "/a1_body", ros::Time(0), transform);    
         vis_body_pose.orientation.x = transform.getRotation().getX();
@@ -86,7 +87,7 @@ void a1_joint_state_callback(const sensor_msgs::JointStateConstPtr& a1_state)
         vis_body_pose.position.z    = transform.getOrigin().z();
     }
     catch (tf::TransformException &ex) {
-      ROS_ERROR("%s",ex.what());
+      // ROS_ERROR("%s",ex.what());
     }
 
     // ROS_INFO("set");
@@ -95,6 +96,19 @@ void a1_joint_state_callback(const sensor_msgs::JointStateConstPtr& a1_state)
     marker_arr_pub.publish(a1_viz_array);
     // clear array for next time use
     a1_viz_array.markers.clear();
+}
+
+// if a ground truth pose exist
+void gt_pose_callback(const nav_msgs::Odometry::ConstPtr &odom) {
+    // update
+    vis_body_pose.orientation.x = odom->pose.pose.orientation.x;
+    vis_body_pose.orientation.y = odom->pose.pose.orientation.y;
+    vis_body_pose.orientation.z = odom->pose.pose.orientation.z;
+    vis_body_pose.orientation.w = odom->pose.pose.orientation.w;  // notice this order   0:w, 1:x, 2:y, 3:z
+    vis_body_pose.position.x    = odom->pose.pose.position.x;
+    vis_body_pose.position.y    = odom->pose.pose.position.y;
+    vis_body_pose.position.z    = odom->pose.pose.position.z;
+
 }
 
 
@@ -108,6 +122,8 @@ int main(int argc, char** argv) {
     // the robot can also publish a message with type sensor_msgs::JointState
     ros::Subscriber sub_a1_joint_foot_msg = nh.subscribe("/isaac_a1/joint_foot", 1000, a1_joint_state_callback);
 
+    // if a ground truth pose exist
+    ros::Subscriber sub_gt_pose_msg = nh.subscribe("/isaac_a1/gt_body_pose", 100, gt_pose_callback);
 
     // robomarker visualizer
     marker_arr_pub = nh.advertise<visualization_msgs::MarkerArray>("a1_robot_visualizer", 100);
