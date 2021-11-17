@@ -58,14 +58,14 @@ include_directories(
 
 
 SET(A1_SOURCES
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/visualize.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/hardware_a1_visualize.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/robot_markers/builder.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/robot_markers/forward_kinematics.cpp
 )
 
-add_executable(a1_visualizer
+add_executable(hardware_a1_visualizer
   ${A1_SOURCES} )
-target_link_libraries( a1_visualizer
+target_link_libraries( hardware_a1_visualizer
                           ${orocos_kdl_LIBRARIES}
                           ${catkin_LIBRARIES} 
                      )

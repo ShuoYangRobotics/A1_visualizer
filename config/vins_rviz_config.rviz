@@ -5,6 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
+        - /Status1
         - /VIOGroup1
         - /VIOGroup1/VIOPath1
         - /VIOGroup1/CameraMarker1
@@ -387,15 +388,9 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        a1_body:
-          Value: true
-        a1_world:
-          Value: true
         body:
           Value: true
         camera:
-          Value: true
-        camera_downward_depth_optical_frame:
           Value: true
         world:
           Value: true
@@ -405,14 +400,10 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        a1_world:
-          world:
-            body:
-              a1_body:
-                {}
-              camera:
-                camera_downward_depth_optical_frame:
-                  {}
+        world:
+          body:
+            camera:
+              {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -450,7 +441,7 @@ Visualization Manager:
       Marker Topic: /a1_robot_visualizer
       Name: MarkerArray
       Namespaces:
-        a1_robot: true
+        {}
       Queue Size: 100
       Value: true
     - Alpha: 1
@@ -470,7 +461,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /vinsfusion/image_track
+      Image Topic: /camera_forward/infra1/image_rect_raw
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -484,7 +475,7 @@ Visualization Manager:
   Global Options:
     Background Color: 0; 0; 0
     Default Light: true
-    Fixed Frame: a1_world
+    Fixed Frame: world
     Frame Rate: 30
   Name: root
   Tools:
@@ -506,7 +497,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/ThirdPersonFollower
-      Distance: 3.764397144317627
+      Distance: 13.094644546508789
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -521,10 +512,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: -0.21520240604877472
+      Pitch: -0.22020240128040314
       Target Frame: world
       Value: ThirdPersonFollower (rviz)
-      Yaw: 4.53563117980957
+      Yaw: 4.495631217956543
     Saved: ~
 Window Geometry:
   Displays:
@@ -544,8 +535,8 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1587
-  X: 13
-  Y: 107
+  X: 833
+  Y: 122
   loop_match_Image:
     collapsed: false
   track_image:

@@ -69,26 +69,9 @@ void a1_joint_state_callback(const sensor_msgs::JointStateConstPtr& a1_state)
 
     // ROS_INFO("build");
     builder->SetNamespace("a1_robot");
-    builder->SetFrameId("a1_world");
+    builder->SetFrameId("world");
     // ROS_INFO("build a1_viz_array");
     builder->Build(&a1_viz_array,1);
-
-    // ROS_INFO("vis_body_pose");
-    // listen to tf
-    tf::StampedTransform transform;
-    try{
-        listener -> lookupTransform("/a1_world", "/a1_body", ros::Time(0), transform);    
-        vis_body_pose.orientation.x = transform.getRotation().getX();
-        vis_body_pose.orientation.y = transform.getRotation().getY();
-        vis_body_pose.orientation.z = transform.getRotation().getZ();
-        vis_body_pose.orientation.w = transform.getRotation().getW();  // notice this order   0:w, 1:x, 2:y, 3:z
-        vis_body_pose.position.x    = transform.getOrigin().x();
-        vis_body_pose.position.y    = transform.getOrigin().y();
-        vis_body_pose.position.z    = transform.getOrigin().z();
-    }
-    catch (tf::TransformException &ex) {
-      // ROS_ERROR("%s",ex.what());
-    }
 
     // ROS_INFO("set");
     builder->SetPose(vis_body_pose);
