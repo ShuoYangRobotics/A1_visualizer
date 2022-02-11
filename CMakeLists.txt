@@ -31,7 +31,7 @@ find_package(catkin REQUIRED COMPONENTS
   visualization_msgs
 
 
-  unitree_legged_msgs
+#  unitree_legged_msgs
 )
 
 #  DEPENDS system_lib
